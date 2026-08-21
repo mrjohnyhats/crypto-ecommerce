@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoinCart Admin</title><link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin-body">
+  <header class="site-header"><a class="brand" href="/"><span class="brand-mark">C</span><span>CoinCart</span></a><a href="/">View storefront ↗</a></header>
+  <main class="admin-main">
+    <section class="login-panel" id="loginPanel">
+      <p class="eyebrow">Administration</p><h1>Sign in</h1>
+      <form id="loginForm"><label>Username<input name="username" autocomplete="username" required></label><label>Password<input name="password" type="password" autocomplete="current-password" required></label><p class="form-error" id="loginError"></p><button class="primary-button" type="submit">Sign in</button></form>
+    </section>
+    <section id="dashboard" hidden>
+      <div class="admin-title"><div><p class="eyebrow">Catalog control</p><h1>Marketplace dashboard</h1></div><button id="logoutButton" class="secondary-button" type="button">Sign out</button></div>
+      <div class="admin-layout">
+        <section class="admin-card"><h2>Add a product</h2><form id="productForm" class="form-grid">
+          <label class="wide">Name<input name="name" required></label>
+          <label>Price (USD)<input name="price" type="number" min="0" step="0.01" required></label>
+          <label>Inventory<input name="inventory" type="number" min="0" step="1" required></label>
+          <label class="wide">Category<input name="category" value="General" required></label>
+          <label class="wide">Image URL<input name="imageUrl" type="url" placeholder="https://…"></label>
+          <label class="wide">Description<textarea name="description" rows="4"></textarea></label>
+          <p class="form-error wide" id="productError"></p><button class="primary-button wide" type="submit">Add product</button>
+        </form></section>
+        <section class="admin-card"><div class="admin-card-head"><h2>Products</h2><span id="productCount">0</span></div><div id="adminProducts" class="admin-list"></div></section>
+      </div>
+      <section class="admin-card orders-card"><div class="admin-card-head"><h2>Recent orders</h2><span id="orderCount">0</span></div><div class="table-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Total</th><th>Currency</th><th>Status</th><th>Created</th></tr></thead><tbody id="ordersBody"></tbody></table></div></section>
+    </section>
+  </main>
+  <script src="/admin.js"></script>
+</body>
+</html>

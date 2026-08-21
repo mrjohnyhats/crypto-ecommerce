@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple marketplace with cryptocurrency checkout.">
+  <title>CoinCart | Crypto marketplace</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#catalog">Skip to catalog</a>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="CoinCart home"><span class="brand-mark" aria-hidden="true">C</span><span>CoinCart</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#catalog">Catalog</a>
+      <button class="cart-button" id="cartButton" type="button" aria-haspopup="dialog">
+        Cart <span id="cartCount" class="count">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">A commerce starter that settles on-chain</p>
+        <h1>Your products.<br><em>Crypto checkout.</em></h1>
+        <p class="hero-intro">A clean starting point for a product catalog, cart, and direct cryptocurrency payments. Add inventory in the admin dashboard and make it yours.</p>
+        <a class="primary-link" href="#catalog">Browse catalog <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="ledger-card" aria-label="Checkout flow preview">
+        <div class="ledger-head"><span>CHECKOUT FLOW</span><span>READY</span></div>
+        <ol>
+          <li><span>01</span><strong>Add products</strong><small>Manage the catalog</small></li>
+          <li><span>02</span><strong>Build a cart</strong><small>Inventory checked live</small></li>
+          <li><span>03</span><strong>Pay with crypto</strong><small>BTC · ETH · USDC · USDT</small></li>
+        </ol>
+        <div class="ledger-foot"><span>NO FRONTEND BUILD</span><span>SQLITE</span></div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <span>BTC</span><i></i><span>ETH</span><i></i><span>USDC</span><i></i><span>USDT</span><i></i><span>SELF-HOSTED</span>
+    </div>
+
+    <section class="catalog-section" id="catalog">
+      <div class="section-heading">
+        <div><p class="eyebrow">Catalog</p><h2>Available products</h2></div>
+        <p>Prices are shown in USD. Choose your preferred cryptocurrency at checkout.</p>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite">
+        <div class="loading">Loading catalog…</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="brand footer-brand" href="/"><span class="brand-mark" aria-hidden="true">C</span><span>CoinCart</span></a>
+    <p>Generic marketplace starter. Configure your catalog, policies, payment gateway, and brand before launch.</p>
+    <a href="/admin.html">Admin</a>
+  </footer>
+
+  <dialog id="cartDialog" class="drawer">
+    <div class="drawer-head"><div><p class="eyebrow">Your order</p><h2>Cart</h2></div><button class="icon-button" data-close type="button" aria-label="Close cart">×</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-total"><span>Subtotal</span><strong id="cartTotal">$0.00</strong></div>
+    <button class="primary-button" id="checkoutButton" type="button">Continue to checkout</button>
+  </dialog>
+
+  <dialog id="checkoutDialog" class="checkout-dialog">
+    <div class="drawer-head"><div><p class="eyebrow">Secure checkout</p><h2>Shipping & payment</h2></div><button class="icon-button" data-close type="button" aria-label="Close checkout">×</button></div>
+    <form id="checkoutForm">
+      <div class="form-grid">
+        <label class="wide">Email<input name="email" type="email" autocomplete="email" required></label>
+        <label class="wide">Full name<input name="customerName" autocomplete="name" required></label>
+        <label class="wide">Address<input name="address" autocomplete="street-address" required></label>
+        <label>City<input name="city" autocomplete="address-level2" required></label>
+        <label>State / region<input name="region" autocomplete="address-level1" required></label>
+        <label>Postal code<input name="postalCode" autocomplete="postal-code" required></label>
+        <label>Country<input name="country" autocomplete="country-name" value="United States" required></label>
+      </div>
+      <fieldset><legend>Pay with</legend><div class="coin-options">
+        <label><input type="radio" name="paymentCurrency" value="btc" checked><span>BTC</span></label>
+        <label><input type="radio" name="paymentCurrency" value="eth"><span>ETH</span></label>
+        <label><input type="radio" name="paymentCurrency" value="usdc"><span>USDC</span></label>
+        <label><input type="radio" name="paymentCurrency" value="usdt"><span>USDT</span></label>
+      </div></fieldset>
+      <p class="form-error" id="checkoutError" role="alert"></p>
+      <button class="primary-button" type="submit">Create payment invoice</button>
+    </form>
+  </dialog>
+
+  <dialog id="invoiceDialog" class="invoice-dialog">
+    <div class="invoice-status">PAYMENT INVOICE</div>
+    <h2>Send the exact amount</h2>
+    <p class="invoice-note" id="invoiceNote"></p>
+    <dl class="invoice-data">
+      <div><dt>Order</dt><dd id="invoiceOrder"></dd></div>
+      <div><dt>Amount</dt><dd id="invoiceAmount"></dd></div>
+      <div><dt>Address</dt><dd id="invoiceAddress"></dd></div>
+    </dl>
+    <button class="secondary-button" id="copyAddress" type="button">Copy address</button>
+    <button class="primary-button" data-close type="button">Done</button>
+  </dialog>
+
+  <script src="/app.js"></script>
+</body>
+</html>
