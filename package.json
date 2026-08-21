@@ -1,5 +1,5 @@
 {
-  "name": "generic-crypto-marketplace",
+  "name": "crypto-ecommerce",
   "version": "1.0.0",
   "description": "A blank, self-hosted e-commerce starter with cryptocurrency checkout.",
   "main": "server/server.js",

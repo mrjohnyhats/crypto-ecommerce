@@ -1,4 +1,4 @@
-# Generic Crypto Marketplace
+# crypto-ecommerce
 
 A clean, self-hosted e-commerce starter with an empty catalog, product management, a browser cart, guest checkout, and cryptocurrency payment invoices.
 

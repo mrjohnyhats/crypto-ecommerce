@@ -26,7 +26,7 @@ test('fresh marketplace starts with a blank catalog', async () => withServer(asy
   assert.deepEqual(await response.json(), []);
 }));
 
-test('admin can sign in and create a generic product', async () => withServer(async ({ base }) => {
+test('admin can sign in and create a product', async () => withServer(async ({ base }) => {
   const login = await fetch(`${base}/api/admin/login`, {
     method: 'POST', headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ username: 'admin', password: 'test-password-123' })

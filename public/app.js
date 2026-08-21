@@ -1,10 +1,10 @@
-const state = { products: [], cart: JSON.parse(localStorage.getItem('coincart-cart') || '{}') };
+const state = { products: [], cart: JSON.parse(localStorage.getItem('crypto-ecommerce-cart') || '{}') };
 const $ = selector => document.querySelector(selector);
 const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
 const escapeHtml = value => String(value).replace(/[&<>'"]/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', "'":'&#39;', '"':'&quot;' })[char]);
 
 function persist() {
-  localStorage.setItem('coincart-cart', JSON.stringify(state.cart));
+  localStorage.setItem('crypto-ecommerce-cart', JSON.stringify(state.cart));
   const count = Object.values(state.cart).reduce((sum, qty) => sum + qty, 0);
   $('#cartCount').textContent = count;
 }
